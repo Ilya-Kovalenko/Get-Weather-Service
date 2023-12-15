@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Get
+  version: 0.1
+paths:
+  /get_now/:
+    post:
+      summary: Get Now
+      description: Get current weather data in the specified location
+      operationId: get_now_get_now__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WeatherData'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Response Get Now Get Now  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '503':
+          description: Connection to external api services error
+
+  /get_forecast/:
+    post:
+      summary: Get Forecast
+      description: Get forecast weather data in the specified location, date and time
+      operationId: get_forecast_get_forecast__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WeatherData'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Response Get Forecast Get Forecast  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '503':
+          description: Connection to external api services error
+
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+    WeatherData:
+      properties:
+        country:
+          type: string
+          title: Country
+        city:
+          type: string
+          title: City
+        when:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: When
+      type: object
+      required:
+        - country
+        - city
+      title: WeatherData
