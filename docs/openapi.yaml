@@ -31,7 +31,7 @@ paths:
         '400':
           description: Bad Request
         '404':
-          description: Not Found
+          description: City not Found
         '503':
           description: Connection to external api services error
 
@@ -63,7 +63,7 @@ paths:
         '400':
           description: Bad Request
         '404':
-          description: Not Found
+          description: City not Found
         '503':
           description: Connection to external api services error
 
