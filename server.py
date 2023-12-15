@@ -14,11 +14,6 @@ class WeatherData(BaseModel):
     when: datetime | None = None
 
 
-@app.get("/")
-async def read_root():
-    return {"Hello": "World"}
-
-
 @app.post("/get_now/")
 async def get_now(weather_data: WeatherData) -> dict:
     result = await get_now_weather(weather_data.city, weather_data.country)
