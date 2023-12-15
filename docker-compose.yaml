@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  weather_api:
+    container_name: "weather_api"
+    image: weather_api
+    environment:
+      - WEATHERAPI_API_KEY=1eac90910b7d45879b2145917231012&
+      - OPENCAGEDATA_API_KEY=ea97195639204ddd87d4b8e93a5a5968
+      - API_NINJAS_API_KEY=/yS83lUsmWdXgsEoe6QaLQ==udQ2snPFeFq04aqb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
