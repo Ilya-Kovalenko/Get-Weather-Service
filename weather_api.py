@@ -4,7 +4,7 @@ from datetime import datetime
 import httpx
 from fastapi import HTTPException
 
-from api_class_module import OpenMeteoApi, WeatherapiApi, BaseApi
+from api_class_module import OpenMeteoApi, WeatherapiApi
 from config import API_NINJAS_API_KEY, API_NINJAS_URL, OPENCAGEDATA_URL
 
 
@@ -44,7 +44,10 @@ async def get_forecast_weather(city: str, country: str, when: datetime) -> dict:
 
 
 async def get_forecast_data_from_api(
-    latitude: float, longitude: float, when: datetime, api_classes: tuple[WeatherapiApi, OpenMeteoApi]
+    latitude: float,
+    longitude: float,
+    when: datetime,
+    api_classes: tuple[WeatherapiApi, OpenMeteoApi],
 ) -> (float, bool):
     tasks = [api.get_forecast_data(latitude, longitude, when) for api in api_classes]
 

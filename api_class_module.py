@@ -8,7 +8,9 @@ from config import (OPEN_METEO_FORECAST_URL, OPEN_METEO_NOW_URL,
 
 
 class BaseApi(ABC):
-    async def get_now_data(self, latitude: float, longitude: float) -> tuple[float, bool] | None:
+    async def get_now_data(
+        self, latitude: float, longitude: float
+    ) -> tuple[float, bool] | None:
         pass
 
     async def get_forecast_data(
@@ -65,9 +67,7 @@ class WeatherapiApi(BaseApi):
                 datetime_el = datetime.strptime(el["time"], "%Y-%m-%d %H:%M")
                 datetime_el = datetime_el.replace(tzinfo=timezone.utc)
 
-                delta.append(
-                    abs(when - datetime_el)
-                )
+                delta.append(abs(when - datetime_el))
 
             min_delta_index = delta.index(min(delta))
 
