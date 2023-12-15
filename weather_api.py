@@ -4,7 +4,7 @@ from datetime import datetime
 import httpx
 from fastapi import HTTPException
 
-from api_class_module import OpenMeteoApi, WeatherapiApi, BaseApi
+from api_class_module import OpenMeteoApi, WeatherapiApi
 from config import API_NINJAS_API_KEY, API_NINJAS_URL, OPENCAGEDATA_URL
 
 
