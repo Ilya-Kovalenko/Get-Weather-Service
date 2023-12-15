@@ -3,8 +3,12 @@ from datetime import datetime, timezone
 
 import httpx
 
-from config import (OPEN_METEO_FORECAST_URL, OPEN_METEO_NOW_URL,
-                    WEATHERAPI_FORECAST_URL, WEATHERAPI_NOW_URL)
+from config import (
+    OPEN_METEO_FORECAST_URL,
+    OPEN_METEO_NOW_URL,
+    WEATHERAPI_FORECAST_URL,
+    WEATHERAPI_NOW_URL,
+)
 
 
 class BaseApi(ABC):
